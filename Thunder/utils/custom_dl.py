@@ -10,13 +10,14 @@ from pyrogram.types import Message
 from Thunder.server.exceptions import FileNotFound
 from Thunder.utils.logger import logger
 from Thunder.vars import Var
+from Thunder.bot import StreamBot  # Add this at the top of the file
 
 class ByteStreamer:
     __slots__ = ('client', 'chat_id')
 
-    def __init__(self, client: Client) -> None:
-        self.client = client
-        self.chat_id = int(Var.BIN_CHANNEL)
+def __init__(self) -> None:
+    self.client = StreamBot
+    self.chat_id = int(Var.BIN_CHANNEL)
 
     async def get_message(self, message_id: int) -> Message:
         while True:
