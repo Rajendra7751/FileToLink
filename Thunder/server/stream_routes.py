@@ -27,11 +27,10 @@ VALID_HASH_REGEX = re.compile(r'^[a-zA-Z0-9_-]+$')
 
 streamers = {}
 
-def get_streamer(client_id: int) -> ByteStreamer:
-    if client_id not in streamers:
-        streamers[client_id] = ByteStreamer(multi_clients[client_id])
-    return streamers[client_id]
-
+def get_streamer() -> ByteStreamer:
+    if "default" not in streamers:
+        streamers["default"] = ByteStreamer()  # No argument now
+    return streamers["default"]
 def parse_media_request(path: str, query: dict) -> tuple[int, str]:
     clean_path = unquote(path).strip('/')
     
