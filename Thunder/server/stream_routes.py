@@ -67,7 +67,7 @@ def select_optimal_client() -> tuple[int, ByteStreamer]:
     else:
         client_id = min(work_loads, key=work_loads.get)
     
-    return client_id, get_streamer(client_id)
+    return 0, get_streamer()  # client_id is no longer used
 
 def parse_range_header(range_header: str, file_size: int) -> tuple[int, int]:
     if not range_header:
